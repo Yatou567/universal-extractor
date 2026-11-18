@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="referrer" content="no-referrer"><title>万能提取 · B站与网页视频</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="lib/bilibili.js" defer></script><script src="lib/collector.js" defer></script><script src="lib/media.js" defer></script><script src="vendor/mux.min.js" defer></script><script src="lib/mp4.js" defer></script><script src="lib/download.js" defer></script><script src="lib/dash.js" defer></script><script src="lib/source-bridge.js" defer></script><script src="lib/player-share.js" defer></script><script src="share-config.js" defer></script><script src="extension-adapter.js" defer></script><script src="app.js" defer></script>
+</head>
+<body>
+  <main>
+    <header class="header"><a class="brand" href="../app.html"><span class="brand-icon">↙</span><span>万能提取<small>B站与网页视频 · 返回工作台</small></span></a><span class="local"><i></i> 扩展内本地处理</span></header>
+    <section class="intro"><h1>把网页里的视频，保存下来。</h1><p>分析页面元素、播放器数据和已加载资源，提取视频，在浏览器内导出完整 MP4。</p></section>
+    <section class="input-card">
+      <label for="input">网页链接、视频地址或页面采集结果</label>
+      <div class="input-row"><textarea id="input" rows="3" placeholder="长按或粘贴视频页面链接…" maxlength="524288" spellcheck="false"></textarea><button id="paste" class="paste">粘贴</button></div>
+      <div class="input-actions"><div class="input-hints"><span>MP4</span><span>M3U8 / HLS</span><span>B 站音画合并</span></div><button id="analyze" class="primary">开始分析 <span>↗</span></button></div>
+      <div class="capture-row"><span>B站直接分析 · 其他网页可用采集</span><a id="bookmark" class="bookmark" href="#" draggable="true">↗ 采集当前页</a><button id="helpToggle" class="text">如何使用</button><label class="import-label" for="importFile">导入采集文件</label><input type="file" id="importFile" accept=".json,application/json" hidden></div>
+      <div id="captureHelp" class="help" hidden><strong>B站直接粘贴链接即可，无需书签</strong><p>扩展会在后台打开原视频页。若需要登录或验证，打开下方原页面完成后，回到这里重新分析。下载期间保持原视频页面和本工作台打开。</p><strong>其他网页不能直接读取时</strong><ol><li>打开视频所在页面，先播放视频。</li><li>点击书签栏的「采集当前页」。已添加旧书签的用户请重新拖入更新。</li><li>点「返回下载」，选择清晰度并导出 MP4。</li></ol><p>B 站下载时请保持原视频页面打开。清晰度以当前可观看的内容为准。其他网站也可复制采集结果后导入。</p><a id="sourcePage" class="open-source" target="_blank" rel="noopener noreferrer" hidden>打开待分析页面 ↗</a></div>
+    </section>
+    <div id="status" class="status" role="status" aria-live="polite" hidden></div>
+    <section id="resultsSection" hidden><div class="section-title"><h2>提取结果 <span id="resultCount"></span></h2><button id="clearResult" class="text">清空结果</button></div><div id="results"></div></section>
+    <section id="job" class="job" hidden aria-live="polite"><div class="job-top"><strong id="jobTitle">准备下载…</strong><button id="cancel" class="text">取消下载</button></div><progress id="progress" max="100" value="0"></progress><div class="job-bottom"><span id="jobDetail"></span><span id="jobPercent"></span></div></section>
+    <div class="save-option"><label><input type="checkbox" id="saveAs"> 选择保存位置<small>大文件推荐，可直接写入磁盘</small></label><span>封面和历史记录均在本机处理</span></div>
+    <section class="history"><div class="section-title"><h2>历史记录</h2><button id="clearHistory" class="text">清空</button></div><div id="historyList"></div><div id="empty" class="empty"><span>↙</span><p>还没有历史记录</p><small>成功分析的视频会直接显示在这里</small></div></section>
+    <footer>万能提取 <span>无需解析服务器 · 不上传视频 · 按需采集页面</span><a href="../guide.html" target="_blank" rel="noopener">使用说明</a></footer>
+  </main>
+  <dialog id="shareDialog" class="share-dialog"><form method="dialog"><button class="share-close" aria-label="关闭分享">×</button></form><h2>分享纯净播放页</h2><p>对方打开后只显示视频与播放控制。</p><label for="shareUrl" class="sr-only">分享链接</label><input id="shareUrl" readonly><div class="share-actions"><button id="copyShare" class="primary">复制分享链接</button><a id="openShare" target="_blank" rel="noopener noreferrer">打开播放页 ↗</a></div><small>来源视频失效时，分享页也会无法播放。</small><p id="shareStatus" role="status" aria-live="polite"></p></dialog>
+
+</body>
+</html>

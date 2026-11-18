@@ -1,0 +1,11 @@
+.DS_Store
+node_modules/
+.env
+.env.*
+*.private.json
+*.pem
+*.key
+*.log
+*.zip
+coverage/
+downloads/

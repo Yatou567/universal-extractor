@@ -1,0 +1,10 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="referrer" content="no-referrer"><meta name="robots" content="noindex,nofollow">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline' blob:; style-src 'self' 'unsafe-inline'; connect-src https: http:; media-src https: http: blob:; worker-src 'self' blob:; img-src data: https: http:; base-uri 'none'; form-action 'none'">
+<title>视频播放</title><link rel="stylesheet" href="player.css">
+<script src="lib/media.js" defer></script><script src="lib/player-share.js" defer></script><script src="vendor/hls.min.js" defer></script><script src="player.js" defer></script>
+</head>
+<body><video id="video" controls playsinline webkit-playsinline preload="metadata" aria-label="视频播放器"></video><div id="overlay" role="status" aria-live="polite"><p id="message">正在准备视频…</p><button id="play" type="button" aria-label="播放视频" hidden>▶</button></div></body>
+</html>
